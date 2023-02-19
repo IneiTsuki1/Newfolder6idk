@@ -35,6 +35,12 @@ public class ModBlock {
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(1.8f).requiresCorrectToolForDrops()), ModCreativeModeTab.TESTMOD_TAB);
 
+    public static final RegistryObject<Block> DEEPSLATE_ORE_TIN = registerBlock("deepslate_ore_tin",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE)
+                    .strength(2f).requiresCorrectToolForDrops()), ModCreativeModeTab.TESTMOD_TAB);
+
+
+
     public static final RegistryObject<Block> ALUMINUM_BLOCK = registerBlock("aluminum_block",
             () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(1.8f).requiresCorrectToolForDrops()), ModCreativeModeTab.TESTMOD_TAB);
@@ -42,6 +48,10 @@ public class ModBlock {
     public static final RegistryObject<Block> ALUMINUM_ORE = registerBlock("aluminum_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(1.8f).requiresCorrectToolForDrops()), ModCreativeModeTab.TESTMOD_TAB);
+
+    public static final RegistryObject<Block> DEEPSLATE_ORE_ALUMINUM = registerBlock("deepslate_ore_aluminum",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE)
+                    .strength(2f).requiresCorrectToolForDrops()), ModCreativeModeTab.TESTMOD_TAB);
 
     public static final RegistryObject<Block> LEAD_BLOCK = registerBlock("lead_block",
             () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
@@ -60,10 +70,17 @@ public class ModBlock {
             () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(2.1f).requiresCorrectToolForDrops()), ModCreativeModeTab.TESTMOD_TAB);
 
+    public static final RegistryObject<Block> DEEPSLATE_ORE_SILICON = registerBlock("deepslate_ore_silicon",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE)
+                    .strength(2f).requiresCorrectToolForDrops()), ModCreativeModeTab.TESTMOD_TAB);
+
     public static final RegistryObject<Block> ROCKET_WORKBENCH_BLOCK = registerBlock("rocket_workbench",
             () -> new RocketWorkbenchBlock(BlockBehaviour.Properties.of(Material.METAL)
                     .strength(4f).requiresCorrectToolForDrops().noOcclusion()), ModCreativeModeTab.TESTMOD_TAB);
 
+    public static final RegistryObject<Block> CIRCUIT_FABRICATOR_BLOCK = registerBlock("circuit_fabricator",
+            () -> new CircuitFabricatorBlock(BlockBehaviour.Properties.of(Material.METAL)
+                    .strength(3f).requiresCorrectToolForDrops().noOcclusion()), ModCreativeModeTab.TESTMOD_TAB);
 
 
 

@@ -14,10 +14,15 @@ public class ModMenuTypes {
     public static final DeferredRegister<MenuType<?>> MENUS =
             DeferredRegister.create(ForgeRegistries.MENU_TYPES, testmod.MOD_ID);
 
+
+    //
     public static final RegistryObject<MenuType<rocketWorkbenchMenu>> ROCKET_WORKBENCH_MENU =
             registerMenuType(rocketWorkbenchMenu::new, "rocketworkbenchmenu");
 
+    public static final RegistryObject<MenuType<circuitFabricatorMenu>> CIRCUIT_FABRICATOR_MENU =
+            registerMenuType(circuitFabricatorMenu::new, "circuit_fabricator_menu");
 
+//
     private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> registerMenuType(IContainerFactory<T> factory,
                                                                                                   String name) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));

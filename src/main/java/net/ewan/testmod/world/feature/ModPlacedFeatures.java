@@ -19,18 +19,32 @@ public class ModPlacedFeatures {
     public static final RegistryObject<PlacedFeature> TIN_ORE_PLACED = PLACED_FEATURES.register("tin_ore",
             () -> new PlacedFeature(ModConfiguresFeatures.TIN_ORE.getHolder().get(),
                     commonOrePlacement(11,
-                            HeightRangePlacement.triangle(VerticalAnchor.absolute(-20), VerticalAnchor.absolute(60)))));
+                            HeightRangePlacement.triangle(VerticalAnchor.absolute(9), VerticalAnchor.absolute(60)))));
+
+    public static final RegistryObject<PlacedFeature> DEEPSLATE_ORE_TIN_PLACED = PLACED_FEATURES.register("deepslate_ore_tin",
+            () -> new PlacedFeature(ModConfiguresFeatures.DEEPSLATE_ORE_TIN.getHolder().get(),
+                    commonOrePlacement(12,
+                            HeightRangePlacement.triangle(VerticalAnchor.absolute(-55), VerticalAnchor.absolute(8)))));
 
     public static final RegistryObject<PlacedFeature> ALUMINUM_ORE_PLACED = PLACED_FEATURES.register("aluminum_ore",
             () -> new PlacedFeature(ModConfiguresFeatures.ALUMINUM_ORE.getHolder().get(),
                     commonOrePlacement(12,
-                            HeightRangePlacement.triangle(VerticalAnchor.absolute(-80), VerticalAnchor.absolute(50)))));
+                            HeightRangePlacement.triangle(VerticalAnchor.absolute(9), VerticalAnchor.absolute(50)))));
+
+    public static final RegistryObject<PlacedFeature> DEEPSLATE_ORE_ALUMINUM = PLACED_FEATURES.register("deepslate_ore_aluminum",
+            () -> new PlacedFeature(ModConfiguresFeatures.DEEPSLATE_ORE_ALUMINUM.getHolder().get(),
+                    commonOrePlacement(12,
+                            HeightRangePlacement.triangle(VerticalAnchor.absolute(-30), VerticalAnchor.absolute(8)))));
 
     public static final RegistryObject<PlacedFeature> SILICON_ORE_PLACED = PLACED_FEATURES.register("silicon_ore",
             () -> new PlacedFeature(ModConfiguresFeatures.SILICON_ORE.getHolder().get(),
                     commonOrePlacement(15,
-                            HeightRangePlacement.triangle(VerticalAnchor.absolute(-30), VerticalAnchor.absolute(80)))));
+                            HeightRangePlacement.triangle(VerticalAnchor.absolute(9), VerticalAnchor.absolute(60)))));
 
+    public static final RegistryObject<PlacedFeature> DEEPSLATE_ORE_SILICON = PLACED_FEATURES.register("deepslate_ore_silicon",
+            () -> new PlacedFeature(ModConfiguresFeatures.DEEPSLATE_ORE_SILICON.getHolder().get(),
+                    commonOrePlacement(15,
+                            HeightRangePlacement.triangle(VerticalAnchor.absolute(-55), VerticalAnchor.absolute(8)))));
 
 
     public static List<PlacementModifier> orePlacement(PlacementModifier p_195347_, PlacementModifier p_195348_) {

@@ -5,6 +5,7 @@ import net.ewan.testmod.block.ModBlock;
 import net.ewan.testmod.block.entity.ModBlockEntities;
 import net.ewan.testmod.item.ModItems;
 import net.ewan.testmod.screen.ModMenuTypes;
+import net.ewan.testmod.screen.circuitFabricatorScreen;
 import net.ewan.testmod.screen.rocketWorkbenchScreen;
 import net.ewan.testmod.world.feature.ModConfiguresFeatures;
 import net.ewan.testmod.world.feature.ModPlacedFeatures;
@@ -63,6 +64,7 @@ public class testmod
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             MenuScreens.register(ModMenuTypes.ROCKET_WORKBENCH_MENU.get(), rocketWorkbenchScreen::new);
+            MenuScreens.register(ModMenuTypes.CIRCUIT_FABRICATOR_MENU.get(), circuitFabricatorScreen::new);
         }
     }
 }

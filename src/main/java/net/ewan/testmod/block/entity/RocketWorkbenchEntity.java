@@ -28,7 +28,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class RocketWorkbenchEntity extends BlockEntity implements MenuProvider {
 
-    private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(18) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -103,12 +103,11 @@ public class RocketWorkbenchEntity extends BlockEntity implements MenuProvider {
         LazyItemHandler.invalidate();
     }
 
-    @Override
+    /* @Override
     protected void saveAdditional(CompoundTag p_187471_) {
         serializeNBT().put("inventory", itemHandler.serializeNBT());
 
-        super.saveAdditional(p_187471_);
-    }
+    } */
 
     @Override
     public void load(CompoundTag p_155245_) {
@@ -118,8 +117,8 @@ public class RocketWorkbenchEntity extends BlockEntity implements MenuProvider {
 
     public void drops() {
         SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
-        for (int i = 0; 1 < itemHandler.getSlots(); i ++) {
-            inventory.setItem(i, itemHandler.getStackInSlot(1));
+        for (int i = 0; i < itemHandler.getSlots(); i ++) {
+            inventory.setItem(i, itemHandler.getStackInSlot(i));
         }
 
         Containers.dropContents(this.level, this.worldPosition, inventory);
@@ -152,7 +151,7 @@ public class RocketWorkbenchEntity extends BlockEntity implements MenuProvider {
     private static void craftItem(RocketWorkbenchEntity pEntity) {
         if (hasRecipe(pEntity)) {
             pEntity.itemHandler.extractItem(1, 1, false);
-            pEntity.itemHandler.setStackInSlot(2, new ItemStack(ModItems.INGOT_ALUMINUM.get(),
+            pEntity.itemHandler.setStackInSlot(18, new ItemStack(ModItems.INGOT_ALUMINUM.get(),
                     pEntity.itemHandler.getStackInSlot(2).getCount() + 1));
 
             pEntity.resetProgress();
@@ -178,12 +177,12 @@ public class RocketWorkbenchEntity extends BlockEntity implements MenuProvider {
         boolean hasCompressedSteelInFourthSlot = pEntity.itemHandler.getStackInSlot(3).getItem() == ModItems.COMPRESSED_STEEL.get();
         boolean hasCompressedSteelInEightSlot = pEntity.itemHandler.getStackInSlot(7).getItem() == ModItems.COMPRESSED_STEEL.get();
         boolean hasCompressedSteelInNinthSlot = pEntity.itemHandler.getStackInSlot(8).getItem() == ModItems.COMPRESSED_STEEL.get();
-        boolean hasCompressedSteelInThenthSlot = pEntity.itemHandler.getStackInSlot(9).getItem() == ModItems.COMPRESSED_STEEL.get();
+        boolean hasCompressedSteelInTenthSlot = pEntity.itemHandler.getStackInSlot(9).getItem() == ModItems.COMPRESSED_STEEL.get();
         boolean hasCompressedSteelInEleventhSlot = pEntity.itemHandler.getStackInSlot(10).getItem() == ModItems.COMPRESSED_STEEL.get();
         boolean hasCompressedSteelInTwelfthSlot = pEntity.itemHandler.getStackInSlot(11).getItem() == ModItems.COMPRESSED_STEEL.get();
         boolean hasCompressedSteelInThirteenthSlot = pEntity.itemHandler.getStackInSlot(12).getItem() == ModItems.COMPRESSED_STEEL.get();
 
-        boolean hasCompressedSteelInForteenthSlot = pEntity.itemHandler.getStackInSlot(13).getItem() == ModItems.NOSE_CONE.get();
+        boolean hasCompressedSteelInFourteenthSlot = pEntity.itemHandler.getStackInSlot(13).getItem() == ModItems.NOSE_CONE.get();
 
         return hasCompressedSteelInFirstSlot && canInsertAmountIntoOutputSlot(inventory) &&
                 canInsertItemItemOutputSlot(inventory, new ItemStack(ModItems.INGOT_ALUMINUM.get(), 1));

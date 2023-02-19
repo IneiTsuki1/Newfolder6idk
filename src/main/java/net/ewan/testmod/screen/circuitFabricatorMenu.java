@@ -1,7 +1,7 @@
 package net.ewan.testmod.screen;
 
 import net.ewan.testmod.block.ModBlock;
-import net.ewan.testmod.block.entity.RocketWorkbenchEntity;
+import net.ewan.testmod.block.entity.CircuitFabricatorBlockEntity;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -12,63 +12,51 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class rocketWorkbenchMenu extends AbstractContainerMenu {
+public class circuitFabricatorMenu extends AbstractContainerMenu {
 
-    public final RocketWorkbenchEntity blockEntity;
+    public final CircuitFabricatorBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
 
-    public rocketWorkbenchMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+
+    public circuitFabricatorMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
         this(id, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()),
                 new SimpleContainerData(2));
     }
 
-    public rocketWorkbenchMenu(int id, Inventory inv, BlockEntity entity, ContainerData data) {
-        super (ModMenuTypes.ROCKET_WORKBENCH_MENU.get(), id);
-        checkContainerSize(inv, 18);
-        blockEntity = (RocketWorkbenchEntity) entity;
+    public circuitFabricatorMenu(int id, Inventory inv, BlockEntity entity, SimpleContainerData data) {
+        super(ModMenuTypes.CIRCUIT_FABRICATOR_MENU.get(), id);
+        checkContainerSize(inv,5);
+        blockEntity = (CircuitFabricatorBlockEntity) entity;
         this.level = inv.player.level;
         this.data = data;
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 20, 79));
-            this.addSlot(new SlotItemHandler(handler, 1, 20, 60));
-            this.addSlot(new SlotItemHandler(handler, 2, 39, 60));
-            this.addSlot(new SlotItemHandler(handler, 3, 58, 60));
-            this.addSlot(new SlotItemHandler(handler, 4, 77, 60));
-            this.addSlot(new SlotItemHandler(handler, 5, 77, 79));
-            this.addSlot(new SlotItemHandler(handler, 6, 49, 79));
-            this.addSlot(new SlotItemHandler(handler, 7, 39, 41));
-            this.addSlot(new SlotItemHandler(handler, 8, 58, 41));
-            this.addSlot(new SlotItemHandler(handler, 9, 39, 22));
-            this.addSlot(new SlotItemHandler(handler, 10, 58, 22));
-            this.addSlot(new SlotItemHandler(handler, 11, 39, 3));
-            this.addSlot(new SlotItemHandler(handler, 12, 58, 3));
-            this.addSlot(new SlotItemHandler(handler, 13, 49, -16));
-            this.addSlot(new SlotItemHandler(handler, 14, 99, -14));
-            this.addSlot(new SlotItemHandler(handler, 15, 121, -14));
-            this.addSlot(new SlotItemHandler(handler, 16, 142, -14));
-            this.addSlot(new SlotItemHandler(handler, 17, 130, 77));
-
+        this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler ->  {
+            this.addSlot(new SlotItemHandler(handler, 0, 12, 15));
+            this.addSlot(new SlotItemHandler(handler, 1, 12, 15));
+            this.addSlot(new SlotItemHandler(handler, 2, 12, 15));
+            this.addSlot(new SlotItemHandler(handler, 3, 12, 15));
+            this.addSlot(new SlotItemHandler(handler, 4, 12, 15));
         });
 
         addDataSlots(data);
+
     }
 
     public boolean isCrafting() {
         return data.get(0) > 0;
     }
 
-  /*  public int getScaledProgress() {
+    public int getScaledProgress() {
         int progress = this.data.get(0);
-        int maxProgress = this.data.get(1);  // Max Progress
-        int progressArrowSize = 26; // This is the height in pixels of your arrow
+        int maxProgress = this.data.get(1); //max progress
+        int progressArrowSize = 26; // this is the height in pixels of your arrow
 
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
-    } */
+    }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
     // must assign a slot number to each of the slots used by the GUI.
@@ -86,7 +74,7 @@ public class rocketWorkbenchMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 18;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 5;  // must be the number of slots you have!
 
     @Override
     public ItemStack quickMoveStack(Player playerIn, int index) {
@@ -121,23 +109,27 @@ public class rocketWorkbenchMenu extends AbstractContainerMenu {
         return copyOfSourceStack;
     }
 
+
     @Override
     public boolean stillValid(Player player) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-                player, ModBlock.ROCKET_WORKBENCH_BLOCK.get());
+                player, ModBlock.CIRCUIT_FABRICATOR_BLOCK.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {
-        for (int i = 0; i < 3; ++i) {
+        for (int i =0; i > 3; ++i) {
             for (int l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 109 + i * 18));
+                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8+ l * 18, 86 + i * 18));
             }
         }
     }
 
     private void addPlayerHotbar(Inventory playerInventory) {
         for (int i = 0; i < 9; ++i) {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 167));
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 144));
         }
     }
+
+
+
 }

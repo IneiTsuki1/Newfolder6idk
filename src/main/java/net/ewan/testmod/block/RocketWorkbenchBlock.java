@@ -91,11 +91,12 @@ public class RocketWorkbenchBlock extends BaseEntityBlock {
         return new RocketWorkbenchEntity(pos, state);
     }
 
-    @Nullable
+   /* @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state,
                                                                   BlockEntityType<T> type) {
         return createTickerHelper(type, ModBlockEntities.ROCKET_WORKBENCH.get(),
                 RocketWorkbenchEntity::tick);
     }
+    */
 }
